@@ -1,21 +1,23 @@
-# Submits all pdbs in the current directory for relaxation
+# How to relax PDBs for use with Rosetta software
 
-   run with 
+1. uploaed all files into a single directory, along with PDBs to be relaxed
+2. Run this script to submit all pdbs in the current directory for relaxation
 
   ```
   python3 submit_relax.py
   ```
 
-starts a script that then runs relax_array.sbatch 
+starts a script that then runs relax_array.sbatch which submits individual jobs for each pdb
 
-which submits individual jobs for each pdb
+currently, it runs 10 jobs for each pdb with nstruct of 5 = 50 structures
+* if it's a large protein, reduce the number of nstructs to 1 and increase jobs to 100
 
-currently, runs 10 jobs for each pdb with nstruct of 5 = 50 structures
+3. it will generate relaxed PDBS in relax_results folder
+4. run this script
 
-# makes a relax_results folder with pdbs
-have relax.py in the relax_results folder and run with 
   ```
   python3 relax.py
   ```
-will go into each folder and make a text file showing top 5 scored pdbs
-also will print it in the terminal
+
+it will go into each folder and make a text file showing top 5 scored pdbs
+will also print it in the terminal
