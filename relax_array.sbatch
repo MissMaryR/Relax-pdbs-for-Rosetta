@@ -1,0 +1,33 @@
+#!/bin/bash --norc
+#SBATCH --job-name=rosetta_relax
+#SBATCH --partition=low
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=8G
+#SBATCH --time=12:00:00
+#SBATCH --requeue
+#SBATCH --array=1-40
+
+set -euo pipefail
+
+PDB="${1:?Usage: sbatch relax_array.sbatch <input.pdb>}"
+BASENAME="$(basename "$PDB" .pdb)"
+OUTDIR="relax_results/${BASENAME}"
+
+mkdir -p logs "$OUTDIR"
+
+/quobyte/jbsiegelgrp/software/Rosetta_314/rosetta/main/source/bin/relax.static.linuxgccrelease \
+  -database /quobyte/jbsiegelgrp/software/Rosetta_314/rosetta/main/database \
+  -overwrite \
+  -nstruct 1 \
+  -ex1 -ex2 \
+  -use_input_sc \
+  -flip_HNQ \
+  -no_optH false \
+  -user_tag ${SLURM_ARRAY_TASK_ID} \
+  -out:suffix _${SLURM_ARRAY_TASK_ID} \
+  -relax:constrain_relax_to_start_coords \
+  -relax:coord_constrain_sidechains \
+  -relax:ramp_constraints false \
+  -in:file:s "$PDB" \
+  -out:path:all "$OUTDIR"
+  -default_max_cycles 200
