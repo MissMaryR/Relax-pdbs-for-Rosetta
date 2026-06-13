@@ -3,9 +3,9 @@
 #SBATCH --partition=low
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=8G
-#SBATCH --time=12:00:00
+#SBATCH --time=10:00:00
 #SBATCH --requeue
-#SBATCH --array=1-40
+#SBATCH --array=1-50
 
 set -euo pipefail
 
