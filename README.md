@@ -36,7 +36,7 @@ Run this from the directory that contains the `relax_results/` subfolders. For e
 | `submit_relax.py` | Submits one SLURM array job per PDB in the current directory |
 | `relax_array.sbatch` | SLURM array script (40 tasks, 1 struct/task); takes a PDB path as argument |
 | `relax_scores.py` | Parses score files, ranks structures, collects best PDBs |
-| `relax.sh` | Simple single-job script for quick tests (hardcoded to `hello.pdb`) |
+| `fast_relax.sh` | Simple single-job script for faster runs |
 
 ## Rosetta flags used
 
@@ -48,7 +48,7 @@ Run this from the directory that contains the `relax_results/` subfolders. For e
 | `-relax:constrain_relax_to_start_coords` | Backbone constrained to input coordinates |
 | `-relax:coord_constrain_sidechains` | Side-chain heavy atoms also constrained |
 | `-relax:ramp_constraints false` | Constraints held constant (not ramped) |
-| `-default_max_cycles 200` | Limits minimization cycles for speed |
+| `-default_max_cycles 200` | Limits minimization cycles for speed - only in fast_relax |
 
 ## Requirements
 
