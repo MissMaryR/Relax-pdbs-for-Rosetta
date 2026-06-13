@@ -1,19 +1,19 @@
 #!/bin/bash --norc
-#SBATCH --job-name=fast_relax
+#SBATCH --job-name=relax
 #SBATCH --partition=low
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=8G
-#SBATCH --time=12:00:00
+#SBATCH --time=10:00:00
 #SBATCH --requeue
 #SBATCH --output=logs/relax_%A_%a.out
 #SBATCH --error=logs/relax_%A_%a.err
-#SBATCH --array=1-10
+#SBATCH --array=1-50
 
 
 /quobyte/jbsiegelgrp/software/Rosetta_314/rosetta/main/source/bin/relax.static.linuxgccrelease \
   -database /quobyte/jbsiegelgrp/software/Rosetta_314/rosetta/main/database \
   -overwrite \
-  -nstruct 5 \
+  -nstruct 1 \
   -ex1 -ex2 \
   -use_input_sc \
   -flip_HNQ \
