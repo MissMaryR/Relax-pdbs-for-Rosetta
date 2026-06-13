@@ -1,5 +1,5 @@
 #!/bin/bash --norc
-#SBATCH --job-name=relax
+#SBATCH --job-name=fastrelax
 #SBATCH --partition=low
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=8G
