@@ -22,12 +22,12 @@ After all jobs complete:
 python relax_scores.py
 ```
 
-Run this in the `relax_results/` folder. For each subfolder it:
+Run this in the same directory as the `relax_results/` folder. For each subfolder it:
 
 - Parses all `score*.sc` files
 - Selects the 5 lowest-scoring (best) structures
-- Writes a ranked summary to `top_5_scores.txt` inside the subfolder
-- Copies the single best PDB into `top_pdbs/` at the top level
+- Writes a ranked summary to `top_5_scores.txt`
+- Copies the 5 best PDBs into separate folders for each submission into a `top_scores/` folder
 
 ## Files
 
