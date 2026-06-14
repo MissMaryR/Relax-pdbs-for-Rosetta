@@ -22,7 +22,7 @@ After all jobs complete:
 python relax_scores.py
 ```
 
-Run this from the directory that contains the `relax_results/` subfolders. For each subfolder it:
+Run this in the `relax_results/` folder. For each subfolder it:
 
 - Parses all `score*.sc` files
 - Selects the 5 lowest-scoring (best) structures
